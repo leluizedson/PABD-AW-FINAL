@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Prisional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>
+            SISTEMA PRISIONAL DOS PEBA
+        </h1>
+    </header>
+
+    <main> Aqui o corpo da parada
+
+        <section id="visualize_Peba">
+            <h1>Visualizar Pebas </h1>
+            <input type="text" placeholder="Insira Informação do Peba"> 
+            <button id="bttn_ver_peba" onclick="buscarPeba()">VER</button>
+
+            <div class="card" id="ver_peba">
+                <img src="" alt="" id="pic_peba" onclick="buscarPeba()">
+                <p id="desc_peba">Acima o Peba</p>
+            </div>
+        </section>
+
+        
+        <section id="add_Peba">
+            <h1>Adicionar Peba</h1>
+            <p>Informações do Peba</p>
+        
+            <form>
+                <input type="text" placeholder="Nome do Peba"> <br>
+                <input type="date"> Nascimento do Peba<br>
+                
+                <input type="radio" name="sex" id="Mulher" value="female">
+                <label for="Mulher">Mulher</label><br>
+                <input type="radio" name="sex" id="Homem" value="male">
+                <label for="Homem">Homem</label> <br>
+                <input type="radio" name="sex" id="nao_binario" value="non_bi">
+                <label for="nao_binario">Não-Binário</label><br>
+                <input type="number">Tempo de pena em Semanas <br>
+                
+                <input type="submit" id="input_add_peba">
+            </form>
+        </section>
+
+        
+        <section id="del_peba">
+            <h1>Excluir Peba</h1>
+            <input type="text" name="" id="input_del_peba" placeholder="Insira Informação do Peba, ex: nome, crime, etc">
+            <button id="delete_Peba">Deletar</button>
+        </section>
+    </main>
+
+    <footer>Direitos Autorais</footer>
+</body>
+
+<script src="script.js"></script>
+</html>
