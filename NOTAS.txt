@@ -1,0 +1,3 @@
+Redefinindo a parada:
+    Pagina Principal mostra TopPebas e a opção de adicionar novos pebas; editar ou excluir 
+    estarão likados ao campo do peba pesquisado, logo incluir uma barra de pesquisa de pebas

@@ -28,3 +28,11 @@ async function buscarPeba() {
       `;
     }
   }
+
+
+const show_section = document.querySelector('#bttn_show_add_peba')
+
+show_section.addEventListener('click', ()=>{
+  const x = document.querySelector('#add_peba')
+  x.style.display = 'block'
+})

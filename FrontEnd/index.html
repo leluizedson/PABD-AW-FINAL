@@ -5,57 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Prisional</title>
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
     <header>
         <h1>
-            SISTEMA PRISIONAL DOS PEBA
+            Gerenciamento de Pebas
         </h1>
     </header>
 
-    <main> Aqui o corpo da parada
+    <main>
+        <section id="input_see_pebas">
+            <input type="text" id="input_peba" placeholder="Buscar Peba...">
+            <button id="search_peba"> <i class="fa-solid fa_magnifying glass"></i></button>
+        </section>
 
-        <section id="visualize_Peba">
-            <h1>Visualizar Pebas </h1>
-            <input type="text" placeholder="Insira Informação do Peba"> 
-            <button id="bttn_ver_peba" onclick="buscarPeba()">VER</button>
+        <section id="pebas_card_conteiner">
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
 
-            <div class="card" id="ver_peba">
-                <img src="" alt="" id="pic_peba" onclick="buscarPeba()">
-                <p id="desc_peba">Acima o Peba</p>
+                <div id="edit_buttons">
+                    <button id="edit_button">Editar</button>
+                    <button id="del_button"></button>
+                </div>
             </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
+            <div class="card">
+                <img src="" alt="">
+                <h2>Nome</h2>
+                <p>Idade</p>
+                <p>Crime:</p>
+            </div>
+
         </section>
 
-        
-        <section id="add_Peba">
-            <h1>Adicionar Peba</h1>
-            <p>Informações do Peba</p>
-        
-            <form>
-                <input type="text" placeholder="Nome do Peba"> <br>
-                <input type="date"> Nascimento do Peba<br>
-                
-                <input type="radio" name="sex" id="Mulher" value="female">
-                <label for="Mulher">Mulher</label><br>
-                <input type="radio" name="sex" id="Homem" value="male">
-                <label for="Homem">Homem</label> <br>
-                <input type="radio" name="sex" id="nao_binario" value="non_bi">
-                <label for="nao_binario">Não-Binário</label><br>
-                <input type="number">Tempo de pena em Semanas <br>
-                
-                <input type="submit" id="input_add_peba">
-            </form>
-        </section>
-
-        
-        <section id="del_peba">
-            <h1>Excluir Peba</h1>
-            <input type="text" name="" id="input_del_peba" placeholder="Insira Informação do Peba, ex: nome, crime, etc">
-            <button id="delete_Peba">Deletar</button>
-        </section>
     </main>
 
-    <footer>Direitos Autorais</footer>
+    <footer>
+        Direitos Autorais
+    </footer>
+    
 </body>
 
 <script src="script.js"></script>
