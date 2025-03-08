@@ -2,7 +2,7 @@ import asyncpg
 from fastapi import FastAPI
 import psycopg2
 from pydantic import BaseModel
-
+from datetime import date
 
 conn = psycopg2.connect(
     dbname="Sistema_de_prisao",
@@ -11,29 +11,6 @@ conn = psycopg2.connect(
     host="localhost",
     port="5432"
 )
-
-cur = conn.cursor()
-
-
-for i in range(1):
-    id_preso = (input('Informe o id do preso: '))
-    nome = (input('Informe o nome do preso: '))
-    data_nasc = (input('Informe a data de nascimento do preso: '))
-    sexo = (input('Informe o sexo do preso: '))
-    tempo_pena = (input('Informe o tempo de pena do preso: '))
-    estado = (input('Informe o estado do preso: '))
-
-    cur.execute("""
-        INSERT INTO preso (id_preso, nome, data_nasc, sexo, tempo_pena, estado)
-        VALUES (%s, %s, %s, %s, %s, %s)
-    """, (id_preso, nome, data_nasc, sexo, tempo_pena, estado))
-
-conn.commit()
-
-print("Dados inseridos com sucesso!")
-
-cur.close()
-conn.close()
 
 app = FastAPI()
 
@@ -55,32 +32,65 @@ async def test_connection():
     await conn.close()
     return {"message": "Conexão com oPostgreSQL bem-sucedida!"}
 
-@app.get("/preso{id_preso}")
-async def get_actors():
+@app.get("/preso/{idpreso}")
+async def get_preso():
     conn = await get_db_connection()
     rows = await conn.fetch("SELECT * FROM preso")
     await conn.close()
     presos = []
     for row in rows:
-       presos.append(f"ID do preso: {row['id_preso']}, "
+       presos.append(f"ID do preso: {row['idpreso']}, "
               f"Nome: {row['nome']}, "
               f"Estado: {row['estado']}")
     return {"users": presos}
 
-class preso(BaseModel):
-    id_preso: int
+class Preso(BaseModel):
+    idpreso: int
     nome: str
-    data_nasc: int
+    datanacs: date
     sexo: str 
-    tempo_pena: int 
+    tempopena: int 
     estado: bool
 
 @app.post("/preso")
-async def create_preso(preso: preso):
+async def create_preso(preso: Preso):
     conn = await get_db_connection()
     await conn.execute(
-        "INSERT INTO preso (id_preso, nome, data_nasc, sexo, tempo_pena, estado) VALUES ($1, $2, $3, $4, $5, $6)",
-        preso.id_preso, preso.nome, preso.data_nasc, preso.sexo, preso.tempo_pena, preso.estado
+        "INSERT INTO preso (idpreso, nome, datanacs, sexo, tempopena, estado) VALUES ($1, $2, $3, $4, $5, $6)",
+        preso.idpreso, preso.nome, preso.datanacs, preso.sexo, preso.tempopena, preso.estado
     )
     await conn.close()
-    return {"message": "Ator criado com sucesso!"}
+    return {"message": "Preso criado com sucesso!"}
+
+class presoUpdate(BaseModel):
+    nome: str
+    datanacs: date
+    tempopena: int
+    estado: bool
+
+@app.put("/preso/{idpreso}")
+async def update_preso(idpreso: int, preso: presoUpdate):
+    conn = await get_db_connection()
+    result = await conn.execute(
+        """
+            UPDATE preso
+            SET nome = $1, datanacs = $2, tempopena = $3, estado = $4
+            WHERE idpreso = $5
+        """,
+        preso.nome, preso.datanacs, preso.tempopena, preso.estado, idpreso
+    )
+    await conn.close()
+    if result == "UPDATE 1":
+        return {"message": f"presos atualizados com sucesso! ID do preso: {idpreso}"}
+    else:
+        return {"message": "Preso não foi atualizado"}
+    
+@app.delete("/preso/{idpreso}")
+async def delete_preso(idpreso: int):
+    conn = await get_db_connection()
+    result = await conn.execute("DELETE FROM preso WHERE idpreso = $1", idpreso)
+    await conn.close()
+    if result == "DELETE 1":
+        return {"message": f"Preso deletado com sucesso! ID do ator: {idpreso}"}
+    else:
+        return {"message": "Preso não foi deletado"}

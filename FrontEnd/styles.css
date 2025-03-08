@@ -1,43 +1,90 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    width: 100vw;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-}
-
-.card {
-    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-
-    width: 200px;
-    height: 200px;
-
-    display: flex;
-    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin: 20px;
     text-align: center;
-    justify-content: center;
+    background-color: #f4f4f4;
 }
 
-.card:hover{
-    box-shadow: 0px 8px 16px 0 rgba(0, 0, 0, 0.2);
+.search-container {
+    margin-bottom: 20px;
 }
 
+.search-container input {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-#pebas_card_conteiner {
+.prisoner-grid {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
 
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+.prisoner-card {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    gap: 10px;
+.prisoner-card:hover {
+    transform: scale(1.05);
+}
+
+.prisoner-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.prisoner-info {
+    margin-top: 10px;
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+.actions button {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.edit-btn {
+    background: #ffc107;
+    color: white;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border-radius: 5px;
+}
+
+.add-prisoner-container {
+    margin-bottom: 20px;
+}
+
+.add-prisoner-container input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.add-btn {
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
 }
