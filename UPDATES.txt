@@ -1,0 +1,28 @@
+Rmovida Conexão Global; mantida apenas a conexão get_db_connection
+Removida biblioteca sincrona psycopg2; mantida asyncpg
+
+Erro de Conexão com API via WEB; solucionado
+    Descrição; ao iniciar a aplicação, ela não iniciava, acusando um erro de sintaxe ou conflito de encoding, algo assim
+    Solução; citados acima
+
+Apagado Ambiente Virtual all_ice, recriado na raiz do projeto sob o nome projeto;
+Reinstaladas bibliotecas no Ambiente Virtual "projeto"
+
+ROTAS APARENTEMENTE FUNCIONANDO; teste realizado com a rota GET, sob idpreso=1
+    Retorno: 
+        {"users":["ID do preso: 1, Nome: Luís, Estado: True"]}
+
+Especificadas nomes de variaveis
+
+Removido, da ROTA POST, a inserção do atributo IDPRESO; esse é gerado de forma serializada
+pelo POSTGRE, portanto sua definição não é necessaria
+
+Descoberto possivel erro ou falha; a coluna IDPRESO, definida como serial, incrementa em 1 seu valor em relação ao
+ultimo valor da coluna: quando um preso é removido, o valor de seu id não é reutilizado; caso apague um idpreso=2, 
+o proximo adicionado terpa idpreso=3, e não =2;
+
+Alterada lista de presos no ENDPOINT GET para lista de dicionarios; a consulta aos dados de cada preso é
+simplificada
+
+Descoberto possivel erro ou falha; a rota GET necessita ser informada de um valor ID para ser acessada, mesmo 
+que retorne todos os presos e não somente um ( com o id correspondente)
