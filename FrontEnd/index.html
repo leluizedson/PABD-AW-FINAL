@@ -23,63 +23,9 @@
     </div>
     
     <div class="prisoner-grid" id="prisonerGrid">
-        <!-- Cards serão inseridos aqui dinamicamente -->
+
     </div>
     
-    <script>
-        const prisoners = [
-            { id: 1, name: "João Silva", age: 35, crime: "Roubo", photo: "https://via.placeholder.com/150" },
-            { id: 2, name: "Carlos Mendes", age: 42, crime: "Fraude", photo: "https://via.placeholder.com/150" },
-            { id: 3, name: "Pedro Souza", age: 28, crime: "Tráfico", photo: "https://via.placeholder.com/150" },
-            { id: 4, name: "Ricardo Alves", age: 39, crime: "Homicídio", photo: "https://via.placeholder.com/150" },
-            { id: 5, name: "Lucas Pereira", age: 31, crime: "Assalto", photo: "https://via.placeholder.com/150" }
-        ];
-
-        function renderPrisoners() {
-            const grid = document.getElementById("prisonerGrid");
-            grid.innerHTML = "";
-            prisoners.forEach(prisoner => {
-                const card = document.createElement("div");
-                card.classList.add("prisoner-card");
-                card.innerHTML = `
-                    <img src="${prisoner.photo}" alt="${prisoner.name}">
-                    <div class="prisoner-info">
-                        <h3>${prisoner.name}</h3>
-                        <p>Idade: ${prisoner.age}</p>
-                        <p>Crime: ${prisoner.crime}</p>
-                    </div>
-                    <div class="actions">
-                        <button class="edit-btn" onclick="editPrisoner(${prisoner.id})">
-                            <i class="fa-solid fa-pen"></i> Editar
-                        </button>
-                        <button class="delete-btn" onclick="deletePrisoner(${prisoner.id})">
-                            <i class="fa-solid fa-trash"></i> Excluir
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function addPrisoner() {
-            const name = document.getElementById("name").value;
-            const age = document.getElementById("age").value;
-            const crime = document.getElementById("crime").value;
-            if (name && age && crime) {
-                prisoners.push({ id: prisoners.length + 1, name, age, crime, photo: "https://via.placeholder.com/150" });
-                renderPrisoners();
-            }
-        }
-
-        function editPrisoner(id) {
-            alert(`Editar preso ID: ${id}`);
-        }
-
-        function deletePrisoner(id) {
-            alert(`Excluir preso ID: ${id}`);
-        }
-
-        renderPrisoners();
-    </script>
+    
 </body>
 </html>
