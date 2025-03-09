@@ -27,10 +27,10 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.preso (
     idpreso integer NOT NULL,
-    nome character varying(30) NOT NULL,
+    nome character varying(255) NOT NULL,
     datanacs date NOT NULL,
-    sexo character varying(10) NOT NULL,
-    crime character varying(30) NOT NULL,
+    sexo character varying(255) NOT NULL,
+    crime character varying(255) NOT NULL,
     tempopena integer NOT NULL,
     estado boolean NOT NULL
 );
@@ -73,8 +73,14 @@ ALTER TABLE ONLY public.preso ALTER COLUMN idpreso SET DEFAULT nextval('public.p
 
 COPY public.preso (idpreso, nome, datanacs, sexo, crime, tempopena, estado) FROM stdin;
 2	Douglas	2011-09-11	Homem	Molestado	69	t
-3	Gustavo	2002-04-04	Homem	Vilopêndio a Cadaver	4	t
 1	Luís	2008-11-27	Homem	Feiura	5	t
+7	PH	2001-09-11	Homem	Latrocínio	6	t
+8	Nunes	2000-11-22	Homem	Tráfico de Pardais	14	f
+9	Rodrigues	1999-09-17	Homem	Arrombamento	3	t
+10	Carlos	2010-09-06	Homem	Terrorismo	4	t
+11	Thiago	1989-02-20	Homem	Jogos Ilegais	89	f
+3	Gustavo	2002-04-04	Homem	Vilipêndio a Cadaver	4	t
+14	Gil do Vigor	2000-02-22	Não-Binário	Calúnia	3	t
 \.
 
 
@@ -82,7 +88,7 @@ COPY public.preso (idpreso, nome, datanacs, sexo, crime, tempopena, estado) FROM
 -- Name: preso_idpreso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.preso_idpreso_seq', 3, true);
+SELECT pg_catalog.setval('public.preso_idpreso_seq', 14, true);
 
 
 --
