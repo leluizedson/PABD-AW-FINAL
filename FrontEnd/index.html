@@ -16,15 +16,80 @@
     </div>
 
     <div class="add-prisoner-container">
-        <input type="text" id="name" placeholder="Nome">
-        <input type="number" id="age" placeholder="Idade">
-        <input type="text" id="crime" placeholder="Crime">
-        <button class="add-btn" onclick="addPrisoner()">Adicionar Preso</button>
+            <input type="text" id="name" placeholder="Nome">
+            <input type="date" id="idade" placeholder="Idade">
+            <select id="genero" placeholder="Gênero">
+                <option value="" disabled selected>Indique o Gênero</option>
+                <option value="Homem"> Homem </option>
+                <option value="Mulher">Mulher</option>
+                <option value="Não-Binário">Não-Binário</option>
+            </select>     
+            <input type="text" id="crime" placeholder="Crime">
+            <input type="number" id="pena" placeholder="Pena (Em Anos)" min="1">
+            <select id="estado" aria-placeholder="Já está preso?">
+                <option value="" disabled selected>Já está preso?</option>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+            </select>
+            <button class="add-btn" onclick="addPrisoner()">Adicionar Preso</button>
     </div>
+
+    <button id="loadprisoners"> Carregar Prisioneiros </button>
     
     <div class="prisoner-grid" id="prisonerGrid">
+        <div class="prisoner-card">
+            <img src="foto.jpg" alt="Foto">
+            <div class="prisoner-info">
+                <h3>Luís</h3>
+                <p>Identificação: #00001</p>
+                <p>Crimes: Cagou nas calças</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Excluir</button>
+            </div>
+        </div>
+
+        <div class="prisoner-card">
+            <img src="gustavo.jpg" alt="Foto">
+            <div class="prisoner-info">
+                <h3>Gustavo</h3>
+                <p>Identificação: #00001</p>
+                <p>Crimes: Vilipêndio a Cadáver</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Excluir</button>
+            </div>
+        </div>
+        
+        <div class="prisoner-card">
+            <img src="douglas.jpg" alt="Foto">
+            <div class="prisoner-info">
+                <h3>Douglas</h3>
+                <p>Identificação: #00003</p>
+                <p>Crimes: Latrocínio</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Excluir</button>
+            </div>
+        </div>
+        
+        <div class="prisoner-card">
+            <img src="ph.jpg" alt="Foto">
+            <div class="prisoner-info">
+                <h3>PH</h3>
+                <p>Identificação: #00004</p>
+                <p>Crimes: Fraude Fiscal</p>
+            </div>
+            <div class="actions">
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Excluir</button>
+            </div>
+        </div>
 
     </div>
-    
+    <script src="script.js"></script>
 </body>
 </html>

@@ -18,11 +18,32 @@ body {
 
 .prisoner-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, max(200px));
     gap: 20px;
     max-width: 1000px;
     margin: auto;
+    justify-content: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .prisoner-card {
     background: white;
@@ -39,6 +60,7 @@ body {
 
 .prisoner-card img {
     width: 100%;
+    max-height: 180px;
     border-radius: 5px;
 }
 
@@ -63,14 +85,60 @@ body {
     border-radius: 5px;
 }
 
+.edit-btn:hover {
+    background: #fdec00;
+}
+
+.edit-btn:active{
+    background: #6e5403;
+}
+
 .delete-btn {
     background: #dc3545;
     color: white;
     border-radius: 5px;
 }
 
+.delete-btn:hover{
+    background: #ff1129;
+}
+
+.delete-btn:active{
+    background: #800915;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .add-prisoner-container {
     margin-bottom: 20px;
+}
+
+.add-prisoner-container select {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .add-prisoner-container input {
@@ -87,4 +155,32 @@ body {
     border-radius: 5px;
     cursor: pointer;
     border: none;
+}
+
+.add-btn:hover{
+    background: #1ad646
+}
+
+.add-btn:active{
+    background: #135e24;
+}
+
+#loadprisoners {
+    background: #2878a7;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+
+    margin-bottom: 20px;
+    
+}
+
+#loadprisoners:hover {
+    background: #199eeb;
+}
+
+#loadprisoners:active{
+    background: #1d516e;
 }

@@ -26,3 +26,4 @@ simplificada
 
 Descoberto possivel erro ou falha; a rota GET necessita ser informada de um valor ID para ser acessada, mesmo 
 que retorne todos os presos e não somente um ( com o id correspondente)
+    UPDATE: sOLUCIONADO; removido o ID, feito algo quenão sei o que foi ( desliguei o pc, acho), não mais necessario o ID

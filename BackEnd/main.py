@@ -33,8 +33,7 @@ async def test_connection():
     return {"message": "Conexão com oPostgreSQL bem-sucedida!"}
 
 
-
-@app.get("/preso/{idpreso}")
+@app.get("/presos")
 async def get_preso():
     conn = await get_db_connection()
     rows = await conn.fetch("SELECT * FROM preso")
