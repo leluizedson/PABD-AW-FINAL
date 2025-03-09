@@ -16,7 +16,7 @@
     </div>
 
     <div class="add-prisoner-container">
-            <input type="text" id="name" placeholder="Nome">
+            <input type="text" id="name" placeholder="Nome" maxlength="30">
             <input type="date" id="idade" placeholder="Idade">
             <select id="genero" placeholder="Gênero">
                 <option value="" disabled selected>Indique o Gênero</option>
@@ -24,7 +24,7 @@
                 <option value="Mulher">Mulher</option>
                 <option value="Não-Binário">Não-Binário</option>
             </select>     
-            <input type="text" id="crime" placeholder="Crime">
+            <input type="text" id="crime" placeholder="Crime" maxlength="30">
             <input type="number" id="pena" placeholder="Pena (Em Anos)" min="1">
             <select id="estado" aria-placeholder="Já está preso?">
                 <option value="" disabled selected>Já está preso?</option>
@@ -35,6 +35,10 @@
     </div>
 
     <button id="loadprisoners"> Carregar Prisioneiros </button>
+
+    <div class="edit-prisoner-container" id="edit-prisoner-container">
+
+    </div>
     
     <div class="prisoner-grid" id="prisonerGrid">
         <div class="prisoner-card">
@@ -54,7 +58,7 @@
             <img src="gustavo.jpg" alt="Foto">
             <div class="prisoner-info">
                 <h3>Gustavo</h3>
-                <p>Identificação: #00001</p>
+                <p>Identificação: #00002</p>
                 <p>Crimes: Vilipêndio a Cadáver</p>
             </div>
             <div class="actions">

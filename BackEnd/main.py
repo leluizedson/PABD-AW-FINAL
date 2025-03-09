@@ -32,6 +32,28 @@ async def test_connection():
     await conn.close()
     return {"message": "Conexão com oPostgreSQL bem-sucedida!"}
 
+@app.get("/preso/{idpreso}")
+async def get_preso(idpreso: int):
+    conn = await get_db_connection()
+    row = await conn.fetchrow("SELECT * FROM preso where idpreso = $1", idpreso)
+    await conn.close()
+    if row:
+
+        preso = [{
+            "id": row['idpreso'],
+            "nome": row["nome"],
+            "nascimento":row['datanacs'],
+            "sexo": row['sexo'],
+            'crime':row['crime'],
+            'pena':row['tempopena'],
+            "estado": row["estado"]
+        }]
+
+        return {
+            'Preso': preso
+        }
+    else:
+        return {"message": "Preso não encontrado"}
 
 @app.get("/presos")
 async def get_preso():
@@ -49,10 +71,10 @@ async def get_preso():
     return {"Presos": presos}
 
 class Modelo_Preso(BaseModel):
-    idpreso: int
     nome: str
     datanacs: date
     sexo: str 
+    crime: str
     tempopena: int 
     estado: bool
 
@@ -60,15 +82,14 @@ class Modelo_Preso(BaseModel):
 async def create_preso(preso: Modelo_Preso):
     conn = await get_db_connection()
     await conn.execute(
-        "INSERT INTO preso ( nome, datanacs, sexo, tempopena, estado) VALUES ($1, $2, $3, $4, $5)",
-        preso.nome, preso.datanacs, preso.sexo, preso.tempopena, preso.estado
+        "INSERT INTO preso (nome, datanacs, sexo, crime, tempopena, estado) VALUES ($1, $2, $3, $4, $5, $6)",
+        preso.nome, preso.datanacs, preso.sexo, preso.crime, preso.tempopena, preso.estado
     )
     await conn.close()
     return {"message": "Preso criado com sucesso!"}
 
 class presoUpdate(BaseModel):
-    nome: str
-    datanacs: date
+    crime: str
     tempopena: int
     estado: bool
 
@@ -78,10 +99,10 @@ async def update_preso(idpreso: int, preso: presoUpdate):
     result = await conn.execute(
         """
             UPDATE preso
-            SET nome = $1, datanacs = $2, tempopena = $3, estado = $4
-            WHERE idpreso = $5
+            SET crime = $1, tempopena = $2, estado = $3
+            WHERE idpreso = $4
         """,
-        preso.nome, preso.datanacs, preso.tempopena, preso.estado, idpreso
+        preso.crime, preso.tempopena, preso.estado, idpreso
     )
     await conn.close()
     if result == "UPDATE 1":

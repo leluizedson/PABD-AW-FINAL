@@ -25,26 +25,6 @@ body {
     justify-content: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .prisoner-card {
     background: white;
     padding: 10px;
@@ -60,7 +40,7 @@ body {
 
 .prisoner-card img {
     width: 100%;
-    max-height: 180px;
+    height: 180px;
     border-radius: 5px;
 }
 
@@ -107,29 +87,6 @@ body {
     background: #800915;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .add-prisoner-container {
     margin-bottom: 20px;
 }
@@ -147,6 +104,28 @@ body {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
+
+.edit-prisoner-container {
+    margin-bottom: 20px;
+
+    display: none;
+}
+
+.edit-prisoner-container select {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.edit-prisoner-container input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
 
 .add-btn {
     background: #28a745;
@@ -172,9 +151,26 @@ body {
     border-radius: 5px;
     cursor: pointer;
     border: none;
-
+    
     margin-bottom: 20px;
     
+}
+
+.update-btn {
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.update-btn:hover{
+    background: #1ad646
+}
+
+.update-btn:active{
+    background: #135e24;
 }
 
 #loadprisoners:hover {
