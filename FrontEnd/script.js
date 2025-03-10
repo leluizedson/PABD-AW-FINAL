@@ -47,8 +47,7 @@ async function renderprisoners (){
         }
 
         const data = await resposta.json();
-        console.log(data)
-
+        
         const prisoners = data.Presos;
 
         prisoners.sort((a, b) => a.id - b.id);
