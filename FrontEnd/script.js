@@ -1,4 +1,5 @@
 const formatId = (id) => `#${id.toString().padStart(5, '0')}`;
+
 let prisonerIDtoEdit = null
 let prisonerIDtoDelete = null
 
@@ -72,13 +73,27 @@ async function renderprisoners (){
                 </div>
                 
                 <div class="actions">
+                    <button class="detail-btn" data-id="${preso.id}">Detalhar</button>
                     <button class="edit-btn" data-id="${preso.id}">Editar</button>
                     <button class="delete-btn" data-id="${preso.id}">Excluir</button>
                 </div>
             `
             
+
             prisonergrid.appendChild(card)
         });
+
+        document.querySelectorAll('.detail-btn').forEach(button => {
+            button.addEventListener('click', (event)=> {
+                const prisonerCard = event.target.closest('.prisoner-card') 
+                const prisonerID = event.target.getAttribute('data-id')
+                const prisonerIMG = prisonerCard.querySelector('img').src
+
+                console.log('ID do prisioneiro a ser detalhado:', prisonerID)
+                console.log('Imagem do prisioneiro: ', prisonerIMG)
+                window.open(`details.html?id=${prisonerID}&img=${encodeURIComponent(prisonerIMG)}`, '_blank');
+            })
+        })
         document.querySelectorAll('.edit-btn').forEach(button => {
             button.addEventListener('click', (event) => {
 

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Preso</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        #prisonerDetails {
+            text-align: center;
+            
+            max-width: 500px;
+            margin: auto;
+        }
+        
+        
+        .prisonerInfo{
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .prisonerInfo:hover{
+            transform: scale(1.05);
+        }
+
+        .prisonerInfo img {
+            margin: 10px;
+            width: 75%;
+            height: 325px;
+            border-radius: 5px;
+        }
+
+        .prisonerData {
+            margin-top: 10px;
+        }
+
+        </style>
+</head>
+<body>
+    <h1>Ficha Criminal</h1>
+    <div id="prisonerDetails"></div>
+    
+    <script>    
+        const fotos = [
+            "Imagens/musk.jpg",
+            "Imagens/putin.jpg",
+            "Imagens/sai.jpg",
+            "Imagens/shinji.jpg",
+            "Imagens/shinjo.jpg",
+            "Imagens/tama.jpg",
+            "Imagens/tiro.jpg",
+            "Imagens/white.jpg",
+            "Imagens/boso.jpg",
+            "Imagens/bozo.jpg",
+            "Imagens/cebola.jpg",
+            "Imagens/crews.jpg",
+            "Imagens/diddy.jpg",
+            "Imagens/dog.jpg",
+            "Imagens/dolly.jpg",
+            "Imagens/douglas.jpg",
+            "Imagens/foto.jpg",
+            "Imagens/frogo.jpg",
+            "Imagens/gustavo.jpg",
+            "Imagens/kim.jpg",
+            "Imagens/liodas.jpg",
+            "Imagens/lovin.jpg",
+            "Imagens/malfeitores/pod.jpg",
+            "Imagens/malfeitores/timote.jpg",
+            "Imagens/malfeitores/alexdeniteroi.jpg",
+            "Imagens/malfeitores/caim.jpg",
+            "Imagens/malfeitores/danielmolo.jpg",
+            "Imagens/malfeitores/eanasir.jpg",
+            "Imagens/malfeitores/gilflamenguista.jpg",
+            "Imagens/malfeitores/grifi.jpg",
+            "Imagens/malfeitores/magomed.jpg",
+            "Imagens/malfeitores/manga.jpg",
+            "Imagens/malfeitores/mc.jpg",
+            "Imagens/malfeitores/pah.jpg",
+        ]
+
+        const descriptions = [
+            'Esse indivíduo arrombou um estabelecimento comercial durante a madrugada e subtraiu diversos bens, dentre estes estão energéticos, maionese, tomates frescos e 5kg de farinha. Ele utilizou ferramentas especializadas para evitar alarmes e foi identificado por câmeras de segurança.',
+            'Esse indivíduo enganou diversas pessoas ao vender produtos inexistentes em plataformas online. Ele coletava pagamentos adiantados e desaparecia sem entregar a mercadoria, causando prejuízo significativo às vítimas. Uma das vítimas relatou: "Eu estava esperando meu ar-condicionado, tá tão quente ultimamente... ',
+            'Esse indivíduo invadiu uma residência portando uma SIG sauer p226 e ameaçou os moradores para obter dinheiro e joias. Durante a ação, manteve uma família refém e fugiu em um veículo roubado.',
+            'Esse indivíduo foi flagrado transportando grande quantidade de substâncias ilícitas em um veículo adulterado. Foram encontrados no carro que o indivíduo estava utilizando 5kg de Maconha e 2kg de pasta base de cocaína. Além disso, mantinha uma rede de distribuição operando em diversos bairros da cidade. A justiça Federal suspeita que o indivíduo mantinha laços de amizade com o PCC(primeiro comando da capital).',
+            'Esse indivíduo utilizava empresas de fachada para movimentar valores provenientes de atividades criminosas. A investigação revelou um esquema sofisticado envolvendo contas bancárias no exterior, além da compra em dinheiro vivo de diversas farmácias, academias e cavalos da raça Quarto de Milha.',
+            'Esse indivíduo premeditou e executou os assassinatos de 3 pessoas em um bar, na região de Santo Amaro no Rio de Janeiro após uma discussão. Ele ameaçou as vítimas com sua Taurus G2C calibre 9mm e realizou múltiplos disparos, sem dar chance de defesa.',
+            'Esse indivíduo dirigia em alta velocidade sob efeito de álcool e cocaína e colidiu contra um veículo que aguardava no semáforo. O impacto resultou na morte de um dos ocupantes e ferimentos graves em outros.',
+            'Esse indivíduo foi encontrado com diversos eletrônicos e veículos roubados em sua mochila, além de que ele estava repassando 6 tabletes de maconha em uma mala com fundo falso. Segundo o indivíduo, ele não sabia que os eletrônicos eram roubados e alegou que a mala preenchida com maconha era de uma amigo e ele apenas estava fazendo o favor de entregá-la para um terceiro. Segundo falas do próprio indivíduo: "Eu não tinha a mínima noção que os eletrônicos eram roubados, apenas pensei que fosse um bom desconto. Eu também não sabia sobre a maconha, se eu soubesse obviamente não teria entrado nessa."',
+            'Esse indivíduo manteve uma pessoa em cativeiro por 6 semanas enquanto exigia resgate dos familiares. A vítima foi localizada em condições psicológicas, físicas e higiênicas degradantes e precisou de atendimento médico imediato.',
+            'Esse indivíduo produzia e comercializava identidades falsas para aplicação em fraudes bancárias. As autoridades encontraram impressoras especializadas e um grande volume de documentos falsificados.',
+            'Esse indivíduo atacou uma pessoa em via pública, causando fraturas e lesões graves em seu rosto e região peitoral, o indivíduo fazia uso de uma faca. O crime foi motivado por uma discussão banal, pessoas próximas dizem que o motivo da discussão foi a simples afirmação: "Cristiano Ronaldo não é nem top 5 melhores jogadores da história". Testemunhas registraram o ocorrido com seus celulares.',
+            'Esse indivíduo fraudava declarações fiscais para sonegar impostos de sua empresa. Ele utilizava notas fiscais frias e esquemas contábeis para ocultar a real movimentação financeira.',
+            'Esse indivíduo tentou subornar um agente público para evitar uma fiscalização. A abordagem foi gravada e serviu como prova para a abertura de um inquérito contra ele. A CNH do indivíduo estava vencida, no vídeo gravado por pessoas próximas é visível que o subornador ofereceu um maço de notas de R$100 para um dos polícias, em seguida o policial subornada desfere um tapa no rosto do indivíduo e o vídeo acaba.',
+            'Esse indivíduo fazia parte de um grupo que coordenava assaltos a bancos e transportadoras de valores, falsificação fiscal, assassinatos planejados e possuía grande envolvimento com bicheiros e manipulação dos de desfiles de carros alegóricos no estado do Rio de Janeiro. Ele tinha função específica dentro da organização e ajudava na logística dos crimes.',
+            'Esse indivíduo operava um garimpo ilegal, causando danos severos ao meio ambiente. A extração irregular de minérios poluiu rios e prejudicou comunidades ribeirinhas.',
+            'Esse indivíduo utilizou seu cargo público para intimidar e prejudicar cidadãos. Ele forjava infrações para extorquir dinheiro de motoristas e comerciantes locais. Também manipulava pessoas que estavam abaixo no nível hierárquico com ameaças como: "É melhor você me obedecer!" Relata uma das diversas vítimas que sofreram esses abusos.',
+            'Esse indivíduo foi flagrado com diversas armas sem registro escondidas em sua residência. Entre os armamentos, havia 7 fuzis FN-FAL 50.63 e munições de uso restrito.',
+            'Esse indivíduo operava um esquema de importação ilegal de produtos eletrônicos. Ele utilizava rotas clandestinas para evitar fiscalização aduaneira e revendia a mercadoria a preços reduzidos. O indivíduo fazia o uso de um caminhão e levava os eletrônicos escondidos quando fazia o transporte de toneladas de milho. Segundo o relatório da Polícia Federal, o indivíduo enchia a caçamba de seu caminhão com toneladas de milho e escondia os eletrônicos no carregamento, ele fazia a rota duas vezes por semana carregado de eletrônicos que Vinham do Paraguai, ao cruzar a fronteira entre Ciudad del Este no Paraguai e Foz do Iguaçu no Brasil o caminhão foi fiscalizado e comprovaram o contrabando. O caminhão e as mercadorias foram apreendidas e o indivíduo foi encaminhado para a Delegacia de polícia federal de Foz do Iguaçu.',
+            'Esse indivíduo invadiu sistemas bancários e desviou valores de diversas contas. Ele utilizava softwares maliciosos para roubar senhas e realizar transferências fraudulentas.',
+            'Esse indivíduo obteve ilegalmente informações sigilosas de uma empresa concorrente. Ele repassava dados estratégicos a terceiros para obter vantagens comerciais ilícitas.',
+            'Esse indivíduo liderou um grupo que destruiu equipamentos urbanos durante um protesto, além de pichar prédios políticos e faculdades. Câmeras de segurança registraram ele pichando e quebrando estruturas públicas.',
+            'Esse indivíduo fazia parte de um grupo que organizava golpes financeiros em larga escala. Ele era responsável pela captação de vítimas e recrutamento de novos integrantes para o esquema.',
+            'Esse indivíduo disseminou informações falsas para prejudicar a reputação de uma pessoa. Ele utilizou redes sociais para espalhar mentiras e vazar fotos íntimas da mesma pessoa, isso causou danos irreversíveis à imagem da vítima. O indivíduo foi pego na Lei Geral de Proteção de Dados Pessoais(LGPD) e além de ser preso pagará as custas processuais e os honorários de sucumbência para a vítima.'
+        ]
+
+
+        const urlDados = new URLSearchParams(window.location.search)
+
+        const prisonerID = urlDados.get('id')
+        const prisonerIMG = urlDados.get('img')
+
+        console.log('ID Prisioneiro - ', prisonerID)
+        console.log('IMG Prisioneiro', prisonerIMG)
+
+        const dadospreso = [prisonerID, prisonerIMG]
+
+        const formatId = (id) => `#${id.toString().padStart(5, '0')}`;
+
+
+        renderPrisoner()
+
+        async function renderPrisoner() {
+            try {
+                const ID = dadospreso[0]
+                const IMG = dadospreso[1]
+
+                const resposta = await fetch(`http://127.0.0.1:8000/preso/${ID}`)
+
+                if (!resposta.ok){
+                    throw new Error('Erro ao carregar preso da API')
+                }
+
+                const dados = await resposta.json()
+                
+                console.log(dados)
+
+                preso = dados.Preso[0]
+
+                const prisonerInfo = document.getElementById('prisonerDetails')
+
+                const card = document.createElement('div')
+                card.classList.add('prisonerInfo')
+
+                const randomimg = fotos[Math.floor(Math.random() * fotos.length)]
+                
+                const randomdescription = descriptions[Math.floor(Math.random() * descriptions.length)]
+
+                card.innerHTML = `
+                    <img src='${randomimg}' alt='Foto de ${preso.nome}'>
+                    <div class="prisonerData">
+                        <h2>${preso.nome} - ID: ${preso.id}</h2>
+                        <p>Identificação: ${formatId(preso.id)}</p>
+                        <p>Nascido em: ${preso.nascimento}</>
+                        <p>Sexo: ${preso.sexo}</p>
+                        <p>Acusação: ${preso.crime} </P>
+                        <p>Condenado a ${preso.pena} anos de prisão.</p>
+
+                    </div>
+                `
+
+                const variavel = document.createElement('h3')
+                variavel.textContent = "Registro de Antecedentes"
+                card.appendChild(variavel)
+
+                const description = document.createElement('p')
+
+                if (preso.estado) {
+                    description.textContent = randomdescription
+                
+                    card.appendChild(description)
+                }
+                
+                if(!preso.estado){
+                    description.textContent = "Após consulta aos registros criminais, verifica-se que o indivíduo em questão não possui antecedentes criminais ou pendências judiciais em seu nome. Não há ocorrências de condenações transitadas em julgado, inquéritos em andamento ou qualquer anotação de natureza penal. Dessa forma, sua ficha criminal é considerada limpa, sem restrições ou impedimentos legais"
+                    card.appendChild(description)
+                }
+
+                prisonerInfo.appendChild(card)
+                
+            } catch (erro) {
+                console.error(erro)
+                alert('Erro ao carregar preso.')
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

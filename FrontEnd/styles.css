@@ -174,6 +174,23 @@ body {
     background: #135e24;
 }
 
+.detail-btn {
+    background: #2878a7;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.detail-btn:hover{
+    background: #199eeb;
+}
+
+.detail-btn:active{
+    background: #1d516e;
+}
+
 #loadprisoners:hover {
     background: #199eeb;
 }
@@ -181,3 +198,5 @@ body {
 #loadprisoners:active{
     background: #1d516e;
 }
+
+
